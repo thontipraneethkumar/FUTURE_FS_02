@@ -1,0 +1,86 @@
+:root {
+  /* Color */
+  --ink: #161B22;
+  --ink-soft: #4A5363;
+  --paper: #F3F4F0;
+  --paper-raised: #FFFFFF;
+  --line: #DCDED7;
+  --line-strong: #B9BDB2;
+  --navy: #1C2733;
+  --navy-soft: #2A3A4A;
+
+  --status-new: #C9852B;
+  --status-new-bg: #FBF0DD;
+  --status-contacted: #2C7A8C;
+  --status-contacted-bg: #E2EFF1;
+  --status-converted: #2F7D4F;
+  --status-converted-bg: #E2F0E5;
+
+  --danger: #B3463F;
+  --danger-bg: #F7E6E4;
+
+  /* Type */
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Layout */
+  --radius: 6px;
+  --shadow-card: 0 1px 2px rgba(22, 27, 34, 0.06), 0 1px 1px rgba(22, 27, 34, 0.04);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 14.5px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+::selection {
+  background: var(--status-contacted-bg);
+}
+
+:focus-visible {
+  outline: 2px solid var(--navy);
+  outline-offset: 2px;
+}
+
+.mono {
+  font-family: var(--font-mono);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}

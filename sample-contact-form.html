@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sample Contact Form → Mini CRM</title>
+  <style>
+    body { font-family: sans-serif; max-width: 420px; margin: 60px auto; }
+    label { display: block; margin-top: 14px; font-size: 13px; font-weight: 600; }
+    input, textarea { width: 100%; padding: 8px; margin-top: 4px; box-sizing: border-box; }
+    button { margin-top: 18px; padding: 10px 18px; }
+    #result { margin-top: 16px; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <h2>Contact Us</h2>
+  <p>This is a sample contact form showing how any website can feed leads into the Mini CRM via the public API.</p>
+
+  <form id="contactForm">
+    <label>Name <input name="name" required /></label>
+    <label>Email <input type="email" name="email" required /></label>
+    <label>Phone <input name="phone" /></label>
+    <label>Message <textarea name="message" rows="3"></textarea></label>
+    <button type="submit">Send</button>
+  </form>
+  <div id="result"></div>
+
+  <script>
+    const API_URL = 'http://localhost:5000/api/public/leads';
+
+    document.getElementById('contactForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const form = e.target;
+      const payload = {
+        name: form.name.value,
+        email: form.email.value,
+        phone: form.phone.value,
+        message: form.message.value,
+        source: 'company-website', // change per-site so you can track where leads come from
+      };
+
+      const resultEl = document.getElementById('result');
+      try {
+        const res = await fetch(API_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        if (!res.ok) throw new Error('Submission failed');
+        resultEl.textContent = 'Thanks! We will be in touch shortly.';
+        form.reset();
+      } catch (err) {
+        resultEl.textContent = 'Something went wrong. Please try again.';
+      }
+    });
+  </script>
+</body>
+</html>
