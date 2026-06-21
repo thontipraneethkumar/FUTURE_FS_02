@@ -2,6 +2,9 @@
 
 A full-stack mini CRM: leads come in from a website contact form, admins log in
 to view, filter, update status, and add follow-up notes.
+Live demo: https://future-fs-02-gray-eight.vercel.app
+Login: Tinku_1010 / Tinku_1010
+GitHub repo: https://github.com/thontipraneethkumar/FUTURE_FS_02
 
 **Stack:** React (Vite) · Node.js + Express · MySQL · JWT auth
 
